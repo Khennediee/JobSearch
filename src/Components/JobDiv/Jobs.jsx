@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Imported icons from react-icons ============>
 import { BiTimeFive } from 'react-icons/bi';
@@ -13,7 +13,10 @@ import logo5 from '../../Assets/logo5.png';
 import logo6 from '../../Assets/logo6.png';
 import logo7 from '../../Assets/logo7.png';
 import logo8 from '../../Assets/logo8.png';
+import Search from '../SearchDiv/Search';
 
+
+const Jobs = () => {
 const Data = [
   {
     id: 1,
@@ -88,10 +91,13 @@ const Data = [
     company: 'Friends Bonding',
   },
 ];
+const [jobs, setJobs] = useState(Data)
 
-const Jobs = () => {
+
   return (
     <div>
+      <Search setJobs={setJobs} jobs={jobs}/>
+
       <div className="jobcontainer flex gap-10 justify-center flex-wrap items-center py-10">
         {Data.map(({ id, image, title, time, location, desc, company }) => {
           return (
@@ -120,7 +126,7 @@ const Jobs = () => {
                   />
                 </div>
 
-                <span className="text-[14px] py-[1rem] block group-hover:text-white">
+                <span className="text-[14px] py-[1rem] block group-hover:text-white font-semibold">
                   {company}
                 </span>
               </div>

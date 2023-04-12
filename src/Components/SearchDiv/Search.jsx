@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 //Imported Icons from React Icons ====>
 import {AiOutlineSearch} from 'react-icons/ai'
@@ -6,7 +6,20 @@ import {AiOutlineCloseCircle} from 'react-icons/ai'
 import {BsHouseDoor} from 'react-icons/bs'
 import {CiLocationOn} from 'react-icons/ci'
 
-const Search = () => {
+const Search = ({setJobs,jobs}) => {
+  const [filter, setFilter] = useState()
+console.log(jobs.filter(item => item.company === filter)); //Fixing filter module this is where we stopped
+
+const filterArray = (name) => {
+if(name === "company"){
+  setJobs(jobs.filter((item) => item.company.includes(filter)))
+}else if(name === "location"){
+  setJobs(jobs.filter((item) => item.location.includes(filter)))
+}else if(name === "title"){
+  setJobs(jobs.filter((item) => item.title.includes(filter)))
+}else return
+}
+
   return (
     <div className='searchDiv grid gap-10 bg-greyIsh rounded-[10px] p-[3rem]'>
       <form action="">
@@ -15,19 +28,19 @@ const Search = () => {
           
           <div className='flex gap-2 items-center'>
             <AiOutlineSearch className='text-[25px] icon'/>
-            <input type="text" className='bg-transparent text-blue-500 focus:outline-none w-[100%]' placeholder='Search Job Here....'/>
+            <input onChange={(e) => {setFilter(e.target.value);filterArray("title")}} type="text" className='bg-transparent text-blue-500 focus:outline-none w-[100%]' placeholder='Search Job Here....'/>
             <AiOutlineCloseCircle className='text-[30px] text-[#a5a6a6] hover:text-textColor icon'/>
           </div>
 
           <div className='flex gap-2 items-center'>
             <BsHouseDoor className='text-[25px] icon'/>
-            <input type="text" className='bg-transparent text-blue-500 focus:outline-none w-[100%]' placeholder='Search by company....'/>
+            <input onChange={(e) => {setFilter(e.target.value);filterArray("company")}} type="text" className='bg-transparent text-blue-500 focus:outline-none w-[100%]' placeholder='Search by company....'/>
             <AiOutlineCloseCircle className='text-[30px] text-[#a5a6a6] hover:text-textColor icon'/>
           </div>
 
           <div className='flex gap-2 items-center'>
             <CiLocationOn className='text-[25px] icon'/>
-            <input type="text" className='bg-transparent text-blue-500 focus:outline-none w-[100%]' placeholder='Search by location....'/>
+            <input onChange={(e) => {setFilter(e.target.value);filterArray("location")}} type="text" className='bg-transparent text-blue-500 focus:outline-none w-[100%]' placeholder='Search by location....'/>
             <AiOutlineCloseCircle className='text-[30px] text-[#a5a6a6] hover:text-textColor icon'/>
           </div>
 
