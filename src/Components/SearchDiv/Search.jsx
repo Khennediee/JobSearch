@@ -12,11 +12,11 @@ console.log(jobs.filter(item => item.company === filter)); //Fixing filter modul
 
 const filterArray = (name) => {
 if(name === "company"){
-  setJobs(jobs.filter((item) => item.company.includes(filter)))
+  setJobs(jobs.filter((item) => item.company.includes(filter)));
 }else if(name === "location"){
-  setJobs(jobs.filter((item) => item.location.includes(filter)))
+  setJobs(jobs.filter((item) => item.location.includes(filter)));
 }else if(name === "title"){
-  setJobs(jobs.filter((item) => item.title.includes(filter)))
+  setJobs(jobs.filter((item) => item.title.includes(filter)));
 }else return
 }
 

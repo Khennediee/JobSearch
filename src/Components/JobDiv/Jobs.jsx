@@ -15,8 +15,6 @@ import logo7 from '../../Assets/logo7.png';
 import logo8 from '../../Assets/logo8.png';
 import Search from '../SearchDiv/Search';
 
-
-const Jobs = () => {
 const Data = [
   {
     id: 1,
@@ -91,10 +89,12 @@ const Data = [
     company: 'Friends Bonding',
   },
 ];
+
+const Jobs = () => {
 const [jobs, setJobs] = useState(Data)
 
 
-  return (
+return (
     <div>
       <Search setJobs={setJobs} jobs={jobs}/>
 
